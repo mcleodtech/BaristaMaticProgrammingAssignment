@@ -18,5 +18,6 @@ export const initialState: InventoryInterface =  {
 export const inventoryReducer = createReducer(
     initialState,
     on(InventoryActions.updateInventory, (state) => ({ ...state }) ),
-    on(InventoryActions.restoreInventory, (state) => ({ ...initialState }) )
+    on(InventoryActions.restoreInventory, (state) => ({ ...initialState }) ),
+    on(InventoryActions.getInventory, (state) => ({ ...state }))
 )
