@@ -91,8 +91,6 @@ describe('CoffeeCardComponent', () => {
     expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(coffee)
     expect(component.disabled('Coffee') === true).toBeTruthy()
-    
-
     component.makeDrink(decafCoffee)
     expect(component.disabled('Decaf Coffee')).toBeFalsy()   
     expect(component.disabled('Coffee') === true).toBeTruthy()
@@ -105,7 +103,6 @@ describe('CoffeeCardComponent', () => {
     component.makeDrink(decafCoffee)
     expect(component.disabled('Coffee') === true).toBeTruthy()
     expect(component.disabled('Coffee') === true).toBeTruthy()
-
   })
 
 });
