@@ -1,3 +1,6 @@
+@import "./styles/variables.scss";
+@import './styles/fonts.scss';
+
 /* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
@@ -10,27 +13,15 @@ body {
     overflow: hidden;
 }
 
-@font-face {
-    font-family: 'Patua-One-Regular';
-    src: url('./assets/fonts/PatuaOne-Regular.ttf') format("truetype");
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'Mahacara';
-    src: url('./assets/fonts/Mahacara.ttf') format("truetype");
-    font-weight: normal;
-}
-
 h1 {
-    font-family: 'Patua-One-Regular';
+    font-family: var(--heading-font);
     font-size: 2rem;
     text-align: center;
-    color: rgb(255, 210, 151);
+    color: var(--primary-color);
 }
 
 .card-button {
-    background-color: rgb(255, 210, 151);
+    background-color: var(--primary-color);
     border-style: none;
     border-radius: 5px;
     height: 50px;
@@ -40,17 +31,17 @@ h1 {
 }
 
 button:hover {
-    background-color: rgb(131, 131, 131);
+    background-color: var(--button-color-2);
 }
 
 button:active {
-    background-color: orange;
-    box-shadow: 0 5px gray;
+    background-color: var(--button-color-active);
+    box-shadow: 0 5px var(--button-color-1);
     transform: translateY(2px);
 }
 
 button:disabled {
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
+    border: 1px solid;
+    background-color: var(--button-color-2);
+    color: var(--button-color-1);
 }
