@@ -5,6 +5,7 @@ import { DrinkDispensorService } from 'src/app/services/drink-dispensor.service'
 
 import { Store } from '@ngrx/store';
 import { restoreInventory } from 'src/app/state/inventory.actions'
+import { InventoryInterface } from 'src/app/models/inventory.model'
 
 @Component({
   selector: 'app-inventory',
@@ -13,7 +14,7 @@ import { restoreInventory } from 'src/app/state/inventory.actions'
 })
 export class InventoryComponent implements OnInit {
 
-  public inventory: any
+  public inventory!: InventoryInterface
   public inventory$ = this.drinkDispensor.getInventory()
   public ingredients$: Observable<any> = this.drinkDispensor.getIngredientList()
   
