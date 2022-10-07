@@ -1,0 +1,170 @@
+{
+  "drinks": [
+    {
+      "id": 1,
+      "name": "Coffee",
+      "ingredients": [
+        {
+          "units": 3,
+          "ingredient": "Coffee"
+        },
+        {
+          "units": 1,
+          "ingredient": "Sugar"
+        },
+        {
+          "units": 1,
+          "ingredient": "Cream"
+        }
+      ],
+      "image_name": "coffee.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Decaf Coffee",
+      "ingredients": [
+        {
+          "units": 3,
+          "ingredient": "Decaf Coffee"
+        },
+        {
+          "units": 1,
+          "ingredient": "Sugar"
+        },
+        {
+          "units": 1,
+          "ingredient": "Cream"
+        }
+      ],
+      "image_name": "decaf-coffee.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Caffe Latte",
+      "ingredients": [
+        {
+          "units": 2,
+          "ingredient": "Espresso"
+        },
+        {
+          "units": 1,
+          "ingredient": "Steamed Milk"
+        }
+      ],
+      "image_name": "caffe-latte.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Caffe Americano",
+      "ingredients": [
+        {
+          "units": 3,
+          "ingredient": "Espresso"
+        }
+      ],
+      "image_name": "caffe-americano.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Caffe Mocha",
+      "ingredients": [
+        {
+          "units": 1,
+          "ingredient": "Espresso"
+        },
+        {
+          "units": 1,
+          "ingredient": "Cocoa"
+        },
+        {
+          "units": 1,
+          "ingredient": "Steamed Milk"
+        },
+        {
+          "units": 1,
+          "ingredient": "Whipped Cream"
+        }
+      ],
+      "image_name": "caffe-mocha.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Cappuccino",
+      "ingredients": [
+        {
+          "units": 2,
+          "ingredient": "Espresso"
+        },
+        {
+          "units": 1,
+          "ingredient": "Steamed Milk"
+        },
+        {
+          "units": 1,
+          "ingredient": "Foamed Milk"
+        }
+      ],
+      "image_name": "cappuccino.jpg"
+    }
+  ],
+
+  "ingredients": [
+    {
+      "id": 1,
+      "ingredient": "Coffee",
+      "price": 0.75,
+      "inventory": 22
+    },
+    {
+      "id": 2,
+      "ingredient": "Decaf Coffee",
+      "price": 0.75,
+      "inventory": 10
+    },
+    {
+      "id": 3,
+      "ingredient": "Sugar",
+      "price": 0.25,
+      "inventory": 10
+    },
+    {
+      "id": 4,
+      "ingredient": "Cream",
+      "price": 0.25,
+      "inventory": 10
+    },
+    {
+      "id": 5,
+      "ingredient": "Steamed Milk",
+      "price": 0.35,
+      "inventory": 10
+    },
+    {
+      "id": 6,
+      "ingredient": "Foamed Milk",
+      "price": 0.35,
+      "inventory": 10
+    },
+    {
+      "id": 7,
+      "ingredient": "Espresso",
+      "price": 1.1,
+      "inventory": 10
+    },
+    {
+      "id": 8,
+      "ingredient": "Cocoa",
+      "price": 0.9,
+      "inventory": 10
+    },
+    {
+      "id": 9,
+      "ingredient": "Whipped Cream",
+      "price": 1,
+      "inventory": 10
+    }
+  ],
+  "inventory": [
+    10, 10, 10, 10, 10, 10, 10, 10, 10
+  ]
+}
