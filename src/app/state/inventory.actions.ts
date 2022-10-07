@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const getInventory = createAction(
     '[Inventory] Get Inventory Success',
-    props<{inventory: {[key: string]: number}}>()
+    props<{[key: string]: number}>()
 )
 
 export const updateInventory = createAction(
