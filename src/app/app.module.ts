@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CoffeeCardComponent } from './components/coffee-card/coffee-card.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { HeaderComponent } from './components/header/header.component';
-import { StatusComponent } from './components/status/status.component';
 
 import { StoreModule } from '@ngrx/store';
 import { inventoryReducer } from './state/inventory.reducer';
@@ -21,7 +20,6 @@ import { environment } from '../environments/environment';
     CoffeeCardComponent,
     InventoryComponent,
     HeaderComponent,
-    StatusComponent
   ],
   imports: [
     BrowserModule,

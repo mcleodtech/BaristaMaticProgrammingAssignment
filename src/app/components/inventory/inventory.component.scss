@@ -4,5 +4,6 @@
     div {
         margin: 20px;
     }
-    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
