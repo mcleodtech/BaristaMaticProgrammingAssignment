@@ -17,6 +17,7 @@
           "ingredient": "Cream"
         }
       ],
+      "price": 2.75,
       "image_name": "coffee.jpg"
     },
     {
@@ -36,6 +37,7 @@
           "ingredient": "Cream"
         }
       ],
+      "price": 2.75,
       "image_name": "decaf-coffee.jpg"
     },
     {
@@ -51,6 +53,7 @@
           "ingredient": "Steamed Milk"
         }
       ],
+      "price": 2.55,
       "image_name": "caffe-latte.jpg"
     },
     {
@@ -85,6 +88,8 @@
           "ingredient": "Whipped Cream"
         }
       ],
+      "price": 3.30,
+
       "image_name": "caffe-mocha.jpg"
     },
     {
@@ -104,6 +109,8 @@
           "ingredient": "Foamed Milk"
         }
       ],
+      "price": 2.90,
+
       "image_name": "cappuccino.jpg"
     }
   ],
