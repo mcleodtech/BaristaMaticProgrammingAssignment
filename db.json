@@ -65,6 +65,7 @@
           "ingredient": "Espresso"
         }
       ],
+      "price": 3.30,
       "image_name": "caffe-americano.jpg"
     },
     {
@@ -88,8 +89,7 @@
           "ingredient": "Whipped Cream"
         }
       ],
-      "price": 3.30,
-
+      "price": 3.35,
       "image_name": "caffe-mocha.jpg"
     },
     {
