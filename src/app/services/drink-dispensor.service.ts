@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DrinkInterface } from '../models/drinks.model';
 import { IngredentInterface } from '../models/ingredients.model';
-import { Observable, map } from 'rxjs'
+import { Observable, map, of } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class DrinkDispensorService {
   }
 
   getInventory() {
-    return this.inventory
+    return of(this.inventory)
   }
 
   resetInventory() {

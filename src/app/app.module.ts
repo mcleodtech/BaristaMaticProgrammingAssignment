@@ -9,6 +9,12 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StatusComponent } from './components/status/status.component';
 
+import { StoreModule } from '@ngrx/store';
+import { inventoryReducer } from './state/inventory.reducer';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +26,13 @@ import { StatusComponent } from './components/status/status.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ inventoryReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,12 @@
 @import "./styles/variables.scss";
 @import './styles/fonts.scss';
+@import './styles/media-queries.scss';
 
 /* You can add global styles to this file, and also import other style files */
+html{
+    overflow: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -20,7 +25,7 @@ h1 {
     color: var(--primary-color);
 }
 
-.card-button {
+button {
     background-color: var(--primary-color);
     border-style: none;
     border-radius: 5px;
