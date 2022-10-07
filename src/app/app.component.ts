@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'BaristaMaticProgrammingAssignment';
+  title = 'BaristaMatic';
 
   public drinkStatus: string = ""
 

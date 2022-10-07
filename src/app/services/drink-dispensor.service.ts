@@ -3,14 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DrinkInterface } from '../models/drinks.model';
 import { IngredentInterface } from '../models/ingredients.model';
-import { Observable, map, of } from 'rxjs'
+import { Observable, map } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DrinkDispensorService {
 
-  private inventory: Array<number> = [10, 10, 10, 10, 10, 10, 10, 10, 10]
+  public inventory: { [key: string]: number } = 
+  {
+    "Coffee": 10,
+    "Decaf Coffee": 10,
+    "Sugar": 10,
+    "Cream": 10,
+    "Steamed Milk": 10,
+    "Foamed Milk": 10,
+    "Espresso": 10,
+    "Cocoa": 10,
+    "Whipped Cream": 10,
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -24,12 +35,29 @@ export class DrinkDispensorService {
       .pipe(map((ingredient) => ingredient || []));
   }
 
-  getInventory(): Observable<Array<number>> {
-    return of<Array<number>>(this.inventory)
+  getInventory() {
+    return this.inventory
   }
 
-  updateInventory(body: Array<number>) {
-    return this.http.put(`${environment.apiUrl}ingredients`, body)
+  resetInventory() {
+
+    this.inventory = {
+      "Coffee": 10,
+      "Decaf Coffee": 10,
+      "Sugar": 10,
+      "Cream": 10,
+      "Steamed Milk": 10,
+      "Foamed Milk": 10,
+      "Espresso": 10,
+      "Cocoa": 10,
+      "Whipped Cream": 10,
+    }
+    return this.inventory
   }
-}
+
+/*   updateInventory(idx: number, value: number) {
+    this.inventory[idx] = value
+    return this.inventory
+  }
+ */}
 

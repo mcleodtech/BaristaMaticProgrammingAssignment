@@ -4,6 +4,6 @@ export interface DrinkInterface {
   ingredients: {
     units: number,
     ingredient: string,
-  },
+  }[],
   image_name: string,
 }

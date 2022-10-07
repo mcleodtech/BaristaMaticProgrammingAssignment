@@ -10,10 +10,11 @@ import { IngredentInterface } from 'src/app/models/ingredients.model';
   styleUrls: ['./coffee-card.component.scss']
 })
 export class CoffeeCardComponent implements OnInit {
-  public disabled = false;
+  private overage: string[] = [];
   public coffeeDrinks$: Observable<any> = this.drinkDispensor.getDrinkList()
   public ingredients$: Observable<any> = this.drinkDispensor.getIngredientList()
   private ingredient?: IngredentInterface;
+  private inventory = this.drinkDispensor.getInventory()
 
   @Output('drinkStatusEmitter') drinkStatusEmitter: EventEmitter<string> = new EventEmitter();
 
@@ -25,8 +26,22 @@ export class CoffeeCardComponent implements OnInit {
   }
 
   makeDrink(drink: DrinkInterface) {
-    console.log(this.ingredient)
-    this.drinkStatusEmitter.emit(`Making ${drink.name}`)
-    
+    this.drinkStatusEmitter.emit(`Making ${drink.name} Please Wait`)
+
+    drink.ingredients.forEach(i => {
+      this.inventory[i.ingredient] = this.inventory[i.ingredient] - i.units
+      if(this.inventory[i.ingredient] - i.units <= 0) {
+        this.overage.push(drink.name);
+        alert("Sorry Sold Out, Please Restock")
+      } else {
+        this.inventory[i.ingredient] = this.inventory[i.ingredient] - i.units
+      }
+    })
+    setTimeout(() => {this.drinkStatusEmitter.emit(`Enjoy your ${drink.name}!!`)}, 1000)
   }
+
+  disabled(i: string) {
+    return this.overage.includes(i)
+  }
+
 }

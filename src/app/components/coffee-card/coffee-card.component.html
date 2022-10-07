@@ -1,8 +1,7 @@
 <div class="cardContainer">
-    <article *ngFor="let drinks of coffeeDrinks$ | async">
+    <article *ngFor="let drinks of coffeeDrinks$ | async let i = index">
         <div class="header-img" style="background-image: url('../../../assets/images/{{drinks.image_name}}');"></div>
         <h1>{{drinks.name}}</h1>
-        <button [disabled]="disabled" class="card-button" (click)="makeDrink(drinks)">Make Drink</button>
+        <button [disabled]="disabled(drinks.name)" class="card-button" (click)="makeDrink(drinks)">Make Drink</button>
     </article>
 </div>
-

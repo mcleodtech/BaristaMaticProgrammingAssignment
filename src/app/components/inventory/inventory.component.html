@@ -1,3 +1,8 @@
-<div *ngFor="let inventory of inventory$ | async">
-    <p>{{inventory}}</p>
+<div class="inventory" >
+    <div *ngFor="let inventorys of inventory | keyvalue">
+        <h3>{{ inventorys.key }}</h3>
+        <p>{{ inventorys.value }} </p>
+    </div>
 </div>
+<button class="card-button" (click)="resetInventory()">Reset Inventory</button>
+
