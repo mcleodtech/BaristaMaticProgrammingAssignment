@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs'
 
 import { DrinkDispensorService } from 'src/app/services/drink-dispensor.service';

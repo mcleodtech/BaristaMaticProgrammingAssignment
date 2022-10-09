@@ -6,6 +6,7 @@ import { IngredentInterface } from 'src/app/models/ingredients.model';
 import { Store } from '@ngrx/store';
 import { updateInventory } from 'src/app/state/inventory.actions'
 import { selectInventory } from 'src/app/state/inventory.selectors';
+import { InventoryInterface } from 'src/app/models/inventory.model'
 
 @Component({
   selector: 'app-coffee-card',
@@ -13,12 +14,13 @@ import { selectInventory } from 'src/app/state/inventory.selectors';
   styleUrls: ['./coffee-card.component.scss'],
 })
 export class CoffeeCardComponent implements OnInit {
+  
   public coffeeDrinks$: Observable<any> = this.drinkDispensor.getDrinkList()
   public ingredients$: Observable<IngredentInterface> = this.drinkDispensor.getIngredientList()
   public inventory$ = this.store.select(selectInventory)
   private ingredient!: IngredentInterface;
-  private inventory: any
-  newInventory!: any
+  private inventory!: InventoryInterface
+  private newInventory!: InventoryInterface
 
   @Output('drinkStatusEmitter') drinkStatusEmitter: EventEmitter<string> = new EventEmitter();
 
@@ -30,7 +32,7 @@ export class CoffeeCardComponent implements OnInit {
     this.inventory = { ...this.newInventory}
   }
 
-  makeDrink(drink: DrinkInterface) {
+  makeDrink(drink: DrinkInterface): void {
     this.inventory = { ...this.newInventory}
     this.drinkStatusEmitter.emit(`Making ${drink.name} Please Wait`)
 
