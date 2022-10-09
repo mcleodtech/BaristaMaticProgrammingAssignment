@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DrinkInterface } from '../models/drinks.model';
 import { IngredentInterface } from '../models/ingredients.model';
-import { Observable, map, of } from 'rxjs'
+import { Observable, map } from 'rxjs'
+import { InventoryInterface } from '../models/inventory.model'
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,9 @@ export class DrinkDispensorService {
   }
 
   getInventory() {
-    return of(this.inventory)
+    return this.http.get<InventoryInterface>(`${environment.apiUrl}ingredients`)
+    .pipe(map((inventory) => inventory || []));
+
   }
 
   getOverage() {

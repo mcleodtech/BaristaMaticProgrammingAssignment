@@ -25,7 +25,6 @@ export class CoffeeCardComponent implements OnInit {
   constructor(private drinkDispensor: DrinkDispensorService, private store: Store) { }
 
   ngOnInit(): void {
-    this.coffeeDrinks$.subscribe(drinks => {console.log(drinks)})
     this.ingredients$.subscribe(ingredients => this.ingredient = ingredients)
     this.inventory$.subscribe(inventory => this.newInventory = inventory)
     this.inventory = { ...this.newInventory}
@@ -42,13 +41,14 @@ export class CoffeeCardComponent implements OnInit {
         return;
       } else {
         this.inventory[i.ingredient] = this.inventory[i.ingredient] - i.units
-        this.store.dispatch(updateInventory(this.inventory))
       }
     })
+    this.store.dispatch(updateInventory(this.inventory))
+
     setTimeout(() => {this.drinkStatusEmitter.emit(`Enjoy your ${drink.name}!!`)}, 1000)
   }
 
-  disabled(i: string) {
+  disabled(i: string): boolean {
     return this.drinkDispensor.getOverage().includes(i)
   }
 

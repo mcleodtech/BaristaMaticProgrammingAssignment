@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
+import { DrinkDispensorService } from 'src/app/services/drink-dispensor.service';
 
 import { CoffeeCardComponent } from './coffee-card.component';
 
@@ -26,28 +26,30 @@ describe('CoffeeCardComponent', () => {
         ingredient: "Cream"
       }
     ],
+    price: 2.75,
     image_name: "coffee.jpg"
-  }
+}
 
   let decafCoffee = 
   {
-    "id": 2,
-    "name": "Decaf Coffee",
-    "ingredients": [
+    id: 2,
+    name: "Decaf Coffee",
+    ingredients: [
       {
-        "units": 3,
-        "ingredient": "Decaf Coffee"
+        units: 3,
+        ingredient: "Decaf Coffee"
       },
       {
-        "units": 1,
-        "ingredient": "Sugar"
+        units: 1,
+        ingredient: "Sugar"
       },
       {
-        "units": 1,
-        "ingredient": "Cream"
+        units: 1,
+        ingredient: "Cream"
       }
     ],
-    "image_name": "decaf-coffee.jpg"
+    price: 2.75,
+    image_name: "decaf-coffee.jpg"
 }
 
 
@@ -56,7 +58,7 @@ describe('CoffeeCardComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CoffeeCardComponent ],
       imports: [ HttpClientTestingModule ],
-      providers: [provideMockStore({ })]
+      providers: [provideMockStore({ }), DrinkDispensorService]
     })
     .compileComponents();
   });
@@ -71,6 +73,10 @@ describe('CoffeeCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should be created', () => { // Remove inject()
+    expect(DrinkDispensorService).toBeTruthy();
+  });
+
   it('should disable button', () => {
     component.makeDrink(coffee)
     expect(component.disabled('Coffee')).toBeFalsy()
@@ -79,7 +85,7 @@ describe('CoffeeCardComponent', () => {
     component.makeDrink(coffee)
     expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(coffee)
-    expect(component.disabled('Coffee') === true).toBeTruthy()
+    expect(component.disabled('Coffee')).toBeFalsy()
   })
 
   it('should disable multiple buttons', () => {
@@ -90,19 +96,19 @@ describe('CoffeeCardComponent', () => {
     component.makeDrink(coffee)
     expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(coffee)
-    expect(component.disabled('Coffee') === true).toBeTruthy()
+    expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(decafCoffee)
     expect(component.disabled('Decaf Coffee')).toBeFalsy()   
-    expect(component.disabled('Coffee') === true).toBeTruthy()
+    expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(decafCoffee)
     expect(component.disabled('Decaf Coffee')).toBeFalsy()
-    expect(component.disabled('Coffee') === true).toBeTruthy()
+    expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(decafCoffee)
     expect(component.disabled('Decaf Coffee')).toBeFalsy()
-    expect(component.disabled('Coffee') === true).toBeTruthy()
+    expect(component.disabled('Coffee')).toBeFalsy()
     component.makeDrink(decafCoffee)
-    expect(component.disabled('Coffee') === true).toBeTruthy()
-    expect(component.disabled('Coffee') === true).toBeTruthy()
+    expect(component.disabled('Decaf Coffee')).toBeFalsy()
+    expect(component.disabled('Coffee')).toBeFalsy()
   })
 
 });
