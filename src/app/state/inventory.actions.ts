@@ -7,7 +7,7 @@ export const getInventory = createAction(
 
 export const updateInventory = createAction(
     '[Inventory] Update Inventory',
-    props<{inventory: {[key: string]: number}}>()
+    props<{[key: string]: number}>()
 )
 
 export const restoreInventory = createAction(

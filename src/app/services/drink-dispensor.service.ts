@@ -10,6 +10,8 @@ import { Observable, map, of } from 'rxjs'
 })
 export class DrinkDispensorService {
 
+  private overage: string[] = [];
+
   public inventory: { [key: string]: number } = 
   {
     "Coffee": 10,
@@ -39,25 +41,17 @@ export class DrinkDispensorService {
     return of(this.inventory)
   }
 
-  resetInventory() {
-
-    this.inventory = {
-      "Coffee": 10,
-      "Decaf Coffee": 10,
-      "Sugar": 10,
-      "Cream": 10,
-      "Steamed Milk": 10,
-      "Foamed Milk": 10,
-      "Espresso": 10,
-      "Cocoa": 10,
-      "Whipped Cream": 10,
-    }
-    return this.inventory
+  getOverage() {
+    return this.overage
   }
 
-/*   updateInventory(idx: number, value: number) {
-    this.inventory[idx] = value
-    return this.inventory
+  setOverage(val: string) {
+    this.overage.push(val)
   }
- */}
+
+  resetOverage() {
+    this.overage = []
+    return this.overage
+  }
+}
 

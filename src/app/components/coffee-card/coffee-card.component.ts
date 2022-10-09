@@ -5,18 +5,20 @@ import { DrinkInterface } from 'src/app/models/drinks.model';
 import { IngredentInterface } from 'src/app/models/ingredients.model';
 import { Store } from '@ngrx/store';
 import { updateInventory } from 'src/app/state/inventory.actions'
+import { selectInventory } from 'src/app/state/inventory.selectors';
 
 @Component({
   selector: 'app-coffee-card',
   templateUrl: './coffee-card.component.html',
-  styleUrls: ['./coffee-card.component.scss']
+  styleUrls: ['./coffee-card.component.scss'],
 })
 export class CoffeeCardComponent implements OnInit {
-  private overage: string[] = [];
   public coffeeDrinks$: Observable<any> = this.drinkDispensor.getDrinkList()
-  public ingredients$: Observable<any> = this.drinkDispensor.getIngredientList()
-  private ingredient?: IngredentInterface;
+  public ingredients$: Observable<IngredentInterface> = this.drinkDispensor.getIngredientList()
+  public inventory$ = this.store.select(selectInventory)
+  private ingredient!: IngredentInterface;
   private inventory: any
+  newInventory!: any
 
   @Output('drinkStatusEmitter') drinkStatusEmitter: EventEmitter<string> = new EventEmitter();
 
@@ -25,16 +27,19 @@ export class CoffeeCardComponent implements OnInit {
   ngOnInit(): void {
     this.coffeeDrinks$.subscribe(drinks => {console.log(drinks)})
     this.ingredients$.subscribe(ingredients => this.ingredient = ingredients)
-    this.drinkDispensor.getInventory().subscribe(inventory => this.inventory = inventory)
+    this.inventory$.subscribe(inventory => this.newInventory = inventory)
+    this.inventory = { ...this.newInventory}
   }
 
   makeDrink(drink: DrinkInterface) {
+    this.inventory = { ...this.newInventory}
     this.drinkStatusEmitter.emit(`Making ${drink.name} Please Wait`)
 
     drink.ingredients.forEach(i => {
       if(this.inventory[i.ingredient] - i.units <= 0) {
-        this.overage.push(drink.name);
+        this.drinkDispensor.setOverage(drink.name);
         alert("Sorry Sold Out, Please Restock")
+        return;
       } else {
         this.inventory[i.ingredient] = this.inventory[i.ingredient] - i.units
         this.store.dispatch(updateInventory(this.inventory))
@@ -44,7 +49,7 @@ export class CoffeeCardComponent implements OnInit {
   }
 
   disabled(i: string) {
-    return this.overage.includes(i)
+    return this.drinkDispensor.getOverage().includes(i)
   }
 
 }

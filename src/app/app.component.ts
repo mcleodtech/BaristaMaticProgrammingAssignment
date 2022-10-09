@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +14,4 @@ export class AppComponent {
   getDrinkStatus(e: string) {
     this.drinkStatus = e
   }
-
 }
